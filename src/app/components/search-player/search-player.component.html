@@ -1,0 +1,56 @@
+<app-banner title="Search player"></app-banner>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form [formGroup]="searchplayerform">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="name" formControlName="name">
+                    </div>
+                    <!-- erreur span -->
+                    <div
+                        *ngIf="searchplayerform.controls['name'].invalid && (searchplayerform.controls['name'].dirty || searchplayerform.controls['name'].touched)">
+                        <div *ngIf="searchplayerform.controls['name'].errors.required">
+                            name is required
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="age" formControlName="age">
+                    </div>
+                    <!-- erreur span -->
+                    <div
+                        *ngIf="searchplayerform.controls['age'].invalid && (searchplayerform.controls['age'].dirty || searchplayerform.controls['age'].touched)">
+                        <div *ngIf="searchplayerform.controls['age'].errors.required">
+                            age is required
+                        </div>
+
+                    </div>
+                    <div *ngIf="findedplayer">
+                        <div *ngFor="let i of findedplayer">
+                            <p> player name : {{i.name}} </p>
+                            <p> player age : {{i.age}} </p>
+                            <p> player post : {{i.position}} </p>
+                            <hr>
+                        </div>
+                    </div>
+                    <div *ngIf="errorMsg">
+                        <p> {{errorMsg}} </p>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="search()" [disabled]="searchplayerform.invalid"
+                            class="btn btn-primary py-3 px-5" value="search">
+                    </div>
+
+                </form>
+
+
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>

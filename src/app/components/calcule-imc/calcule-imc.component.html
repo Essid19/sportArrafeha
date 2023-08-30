@@ -1,0 +1,63 @@
+<app-banner title="calcule imc player"></app-banner>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form [formGroup]="searchplayerform">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="name" formControlName="name">
+                    </div>
+                    <div
+                        *ngIf="searchplayerform.controls['name'].invalid && (searchplayerform.controls['name'].dirty || searchplayerform.controls['name'].touched)">
+                        <div *ngIf="searchplayerform.controls['name'].errors.required">
+                            name is required
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="taille" formControlName="taille">
+                    </div>
+                    <!-- erreur span -->
+                    <div
+                        *ngIf="searchplayerform.controls['taille'].invalid && (searchplayerform.controls['taille'].dirty || searchplayerform.controls['taille'].touched)">
+                        <div *ngIf="searchplayerform.controls['taille'].errors.required">
+                            name is required
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="poids" formControlName="poids">
+                    </div>
+                    <!-- erreur span -->
+                    <div
+                        *ngIf="searchplayerform.controls['poids'].invalid && (searchplayerform.controls['poids'].dirty || searchplayerform.controls['poids'].touched)">
+                        <div *ngIf="searchplayerform.controls['poids'].errors.required">
+                            age is required
+                        </div>
+
+                    </div>
+                    <div *ngIf="chaine">
+
+
+                        <p> {{chaine}} </p>
+
+
+                    </div>
+
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="calcule()" [disabled]="searchplayerform.invalid"
+                            class="btn btn-primary py-3 px-5" value="calcule">
+                    </div>
+
+                </form>
+
+
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>

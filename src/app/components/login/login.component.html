@@ -1,0 +1,27 @@
+<app-banner [title]="Login"></app-banner>
+<div class="site-section hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form #loginForm="ngForm" (ngSubmit)="login()">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.email" name="email" class="form-control"
+                            placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="user.pwd" name="pwd" class="form-control"
+                            placeholder="Name">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Login">
+                    </div>
+                    <p style="color: red;" class="text-center" *ngIf="msg">{{msg}}</p>
+                </form>
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>

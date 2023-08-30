@@ -1,0 +1,43 @@
+<app-banner title="Search City"></app-banner>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form [formGroup]="searchForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="city" formControlName="city">
+                    </div>
+                    <!-- erreur span -->
+                    <div
+                        *ngIf="searchForm.controls['city'].invalid && (searchForm.controls['city'].dirty || searchForm.controls['city'].touched)">
+                        <div *ngIf="searchForm.controls['city'].errors.required">
+                            city is required
+                        </div>
+
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="search()" [disabled]="searchForm.invalid"
+                            class="btn btn-primary py-3 px-5" value="search">
+                    </div>
+
+                </form>
+                <div *ngIf="obj">
+                    <p> temp : {{obj.temp}} </p>
+                    <p> humidity : {{obj.humidity}} </p>
+                    <p> pressure : {{obj.pressure}} </p>
+                    <p> wind/speed : {{obj.windspeed}} </p>
+                    <img src="{{obj.image}}" alt="">
+                </div>
+                <div *ngIf="msg">
+                    <p>introuvable </p>
+                </div>
+
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>

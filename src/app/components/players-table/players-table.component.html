@@ -1,0 +1,24 @@
+<table class="table table-striped table-dark text-center">
+    <thead>
+        <tr>
+            <th scope="col">id </th>
+            <th scope="col">name </th>
+            <th scope="col">age</th>
+            <th scope="col">position </th>
+            <th scope="col" class="">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of playersstab">
+            <th scope="row">{{i._id}}</th>
+            <td>{{i.name}}</td>
+            <td>{{i.age}}</td>
+            <td>{{i.position}}</td>
+            <td><button class="btn btn-success mr-2" (click)="display(i._id)">display</button>
+                <button class="btn btn-warning mr-2" (click)="edit(i._id)">Update</button>
+                <button class="btn btn-danger mr-2" (click)="delete(i._id)">Delette</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

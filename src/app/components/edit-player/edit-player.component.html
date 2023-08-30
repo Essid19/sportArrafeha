@@ -1,0 +1,36 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Edit Player</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form #editPlayerForm="ngForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="name" [(ngModel)]="obj.name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Age" [(ngModel)]="obj.age" name="age">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Position" [(ngModel)]="obj.position"
+                            name="position">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Add">
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>

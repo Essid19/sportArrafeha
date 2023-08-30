@@ -1,0 +1,40 @@
+<div class="container">
+    <form>
+        <div class="text-center form-group">
+            <label for="">Filter By team One</label>
+            <input type="text" class="form-control" placeholder="Filter By team One" [(ngModel)]='term'
+                [ngModelOptions]="{standalone: 
+      true}">
+        </div>
+    </form>
+    <table class="table table-striped table-dark text-center container">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">score1</th>
+                <th scope="col">score2</th>
+                <th scope="col">team1</th>
+                <th scope="col">team2</th>
+                <th scope="col" class="">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- tr will be generated matchestab.length -->
+            <tr *ngFor="let i of pageOfItems | search:term">
+                <th scope="row">{{i._id}}</th>
+                <td>{{i.scoreOne}}</td>
+                <td>{{i.scoreTwo}}</td>
+                <td>{{i.teamOne}}</td>
+                <td>{{i.teamTwo}}</td>
+                <td><button class="btn btn-success mr-2" (click)="display(i._id)">display</button>
+                    <button class="btn btn-warning mr-2" (click)="edit(i._id)">Update</button>
+                    <button class="btn btn-danger mr-2" (click)="delete(i._id)">Delette</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-footer pb-0 pt-3 text-center">
+        <jw-pagination class="pagination-transparent" [items]="matchestab" [pageSize]="2"
+            (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+</div>

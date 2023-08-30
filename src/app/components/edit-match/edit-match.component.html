@@ -1,0 +1,36 @@
+<app-banner title="Edit Match"></app-banner>
+
+
+<div class="site-section hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form #editMatchForm="ngForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Score 1" [(ngModel)]="obj.scoreOne"
+                            name="scoreOne">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Score 2" [(ngModel)]="obj.scoreTwo"
+                            name="scoreTwo">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Team1" [(ngModel)]="obj.teamOne"
+                            name="teamOne">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Team2" [(ngModel)]="obj.teamTwo"
+                            name="teamTwo   ">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Edit">
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>

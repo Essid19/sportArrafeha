@@ -1,0 +1,50 @@
+<app-banner title="Add Stadium"></app-banner>
+<div class="site-section hello">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form action="#" [formGroup]="addstadium">
+                    <div class=" form-group">
+                        <input type="text" class="form-control" placeholder="name" formControlName="name">
+                    </div>
+                    <div
+                        *ngIf="addstadium.controls['name'].invalid && (addstadium.controls['name'].dirty || addstadium.controls['name'].touched)">
+                        <div *ngIf="addstadium.controls['name'].errors.required">
+                            First name is required
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="scoreTwo" placeholder="capacity"
+                            formControlName="capacity">
+                    </div>
+                    <div
+                        *ngIf="addstadium.controls['capacity'].invalid && (addstadium.controls['capacity'].dirty || addstadium.controls['capacity'].touched)">
+                        <div *ngIf="addstadium.controls['capacity'].errors.required">
+                            First name is required
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="teamOne" placeholder="country"
+                            formControlName="country">
+                    </div>
+                    <div
+                        *ngIf="addstadium.controls['country'].invalid && (addstadium.controls['country'].dirty || addstadium.controls['country'].touched)">
+                        <div *ngIf="addstadium.controls['country'].errors.required">
+                            First name is required
+                        </div>
+
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input (click)="addStadium()" class="btn btn-primary py-3 px-5" value="ADD">
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 ml-auto">
+            </div>
+        </div>
+    </div>
+</div>
