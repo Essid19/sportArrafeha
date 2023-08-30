@@ -51,6 +51,7 @@ import { WeatherComponent } from "./components/weather/weather.component";
 import { ApiteamsComponent } from "./components/apiteams/apiteams.component";
 import { SearchPipe } from "./pipes/search.pipe";
 import { JwPaginationModule } from "jw-angular-pagination";
+import { UsersTableComponent } from './components/users-table/users-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +99,7 @@ import { JwPaginationModule } from "jw-angular-pagination";
     WeatherComponent,
     ApiteamsComponent,
     SearchPipe,
+    UsersTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,9 @@ export class UserService {
   userURL = "http://localhost:3000/users";
 
   constructor(private http: HttpClient) {}
+  getAllUsers() {
+    return this.http.get<{ users: any }>(this.userURL);
+  }
   login(obj) {
     return this.http.post<{ user: any; msg: string }>(
       this.userURL + "/login",

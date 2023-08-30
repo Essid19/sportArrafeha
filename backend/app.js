@@ -526,6 +526,13 @@ app.post("/apiteams", async (req, res) => {
   let obj = {};
   // traitement de la req
 });
-
+// get all users
+app.get("/users", (req, res) => {
+  // traitement de la req
+  console.log("here into BL : get all users");
+  User.find().then((data) => {
+    res.json({ users: data });
+  });
+});
 // make app importable from another files
 module.exports = app;
