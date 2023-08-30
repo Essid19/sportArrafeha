@@ -8,7 +8,7 @@ import { MatchService } from "src/app/services/match.service";
   styleUrls: ["./matches-table.component.css"],
 })
 export class MatchesTableComponent implements OnInit {
-  matchestab;
+  matchestab: any = [];
 
   constructor(private router: Router, private service: MatchService) {}
   pageOfItems: Array<any>;
