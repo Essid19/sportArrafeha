@@ -12,10 +12,11 @@ export class SignupComponent implements OnInit {
   imagePreview: any;
   messageErrorTel: string;
   messageErrorEmail: string;
-  SignUp = "SignUp";
   y = "ali bensalah";
   signupForm: FormGroup;
   myPath;
+  a = false;
+  b = false;
   constructor(
     private formBuilder: FormBuilder,
     private userservice: UserService,
@@ -24,6 +25,11 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.myPath = this.router.url;
+    if (this.myPath == "/signup") {
+      this.a = true;
+    } else {
+      this.b = true;
+    }
     this.signupForm = this.formBuilder.group({
       firstName: ["", [Validators.required, Validators.minLength(3)]],
       lastName: ["", [Validators.required, Validators.minLength(5)]],
