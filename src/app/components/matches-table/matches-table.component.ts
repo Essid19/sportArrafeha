@@ -1,7 +1,5 @@
-import { TeamService } from "src/app/services/team.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { T } from "src/app/data/matches";
 import { MatchService } from "src/app/services/match.service";
 
 @Component({
