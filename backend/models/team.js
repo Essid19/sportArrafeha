@@ -7,6 +7,12 @@ const teamSchema = mongoose.Schema({
   name: String,
   stadium: String,
   owner: String,
+  players: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Player",
+    },
+  ],
 });
 
 // affectation de modele nom a schema :

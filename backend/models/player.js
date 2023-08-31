@@ -1,15 +1,14 @@
-// l imporation de mongoose :
 const mongoose = require("mongoose");
-
-//  create match schema :
-
-const playerSchema = mongoose.Schema({
+const playerSchema = new mongoose.Schema({
   name: String,
-  age: Number,
   position: String,
+  age: Number,
+  team: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Team",
+  },
 });
-
-// affectation de modele nom a schema :
+// create Model Name "Player"
 const player = mongoose.model("Player", playerSchema);
-//  export
+// make player exportable
 module.exports = player;

@@ -1,7 +1,8 @@
-import { FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { PlayerService } from "src/app/services/player.service";
 import { Router } from "@angular/router";
+import { TeamService } from "src/app/services/team.service";
 
 @Component({
   selector: "app-add-player",
@@ -10,15 +11,38 @@ import { Router } from "@angular/router";
 })
 export class AddPlayerComponent implements OnInit {
   player = {};
-  addPlayerForm = FormGroup;
+  teamlist;
+  teamId;
+  addPlayerForm: FormGroup;
   addplayer = "Add Player";
-  constructor(private playerService: PlayerService, private router: Router) {}
+  constructor(
+    private playerService: PlayerService,
+    private router: Router,
+    private tservice: TeamService,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addPlayerForm = this.fb.group({
+      name: ["", [Validators.required]],
+      age: ["", [Validators.required]],
+      position: ["", [Validators.required]],
+    });
+    this.tservice.getAllTeam().subscribe((res) => {
+      this.teamlist = res.teams;
+    });
+  }
   addPlayer() {
     alert("login clicked");
-    console.log("here object", this.player);
-    this.playerService.addPlayer(this.player).subscribe();
-    this.router.navigate(["admin"]);
+    this.addPlayerForm.value.teamId = this.teamId;
+    console.log("here object from FE", this.addPlayerForm.value);
+    this.playerService.addPlayer(this.addPlayerForm.value).subscribe((data) => {
+      console.log("here msg from BE", data.isAdded);
+      this.router.navigate(["admin"]);
+    });
+  }
+  getTeamId(event) {
+    console.log("here team id", event.target.value);
+    this.teamId = event.target.value;
   }
 }

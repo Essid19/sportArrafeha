@@ -17,7 +17,10 @@ export class PlayerService {
   }
 
   addPlayer(obj) {
-    return this.http.post<{ msg: string }>(this.playerURL, obj);
+    return this.http.post<{ message: string; isAdded: boolean }>(
+      this.playerURL,
+      obj
+    );
   }
   // requeste to delete player by id
   deletePlayer(id) {

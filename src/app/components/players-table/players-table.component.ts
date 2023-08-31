@@ -13,7 +13,9 @@ export class PlayersTableComponent implements OnInit {
   constructor(private router: Router, private service: PlayerService) {}
 
   ngOnInit() {
-    this.refresh();
+    this.service.getAllPlayer().subscribe((e) => {
+      this.playersstab = e.players;
+    });
   }
   display(x) {
     this.router.navigate([`playerinfo/${x}`]);
@@ -25,12 +27,9 @@ export class PlayersTableComponent implements OnInit {
   delete(x) {
     alert(`player n ${x} delete`);
     this.service.deletePlayer(x).subscribe((e) => {
-      this.refresh();
-    });
-  }
-  refresh() {
-    this.service.getAllPlayer().subscribe((e) => {
-      this.playersstab = e.players;
+      this.service.getAllPlayer().subscribe((e) => {
+        this.playersstab = e.players;
+      });
     });
   }
 }

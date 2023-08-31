@@ -1,24 +1,49 @@
-<app-banner [title]="addplayer"></app-banner>
+<app-banner title="Add Player"></app-banner>
 <div class="site-section hello">
     <div class="container">
         <div class="row">
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
-                <form action="#" #addPlayerForm="ngForm" (ngSubmit)="addPlayer()">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="name" [(ngModel)]="player.name"
-                            name="name">
+                <form action="#" [formGroup]="addPlayerForm">
+                    <div class=" form-group">
+                        <input type="text" class="form-control" placeholder="name" formControlName="name">
+                    </div>
+                    <div
+                        *ngIf="addPlayerForm.controls['name'].invalid && (addPlayerForm.controls['name'].dirty || addPlayerForm.controls['name'].touched)">
+                        <div *ngIf="addPlayerForm.controls['name'].errors.required">
+                            First name is required
+                        </div>
+                
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Age" [(ngModel)]="player.age" name="age">
+                        <input type="text" class="form-control" name="scoreTwo" placeholder="age" formControlName="age">
+                        </div>
+                        <div
+                            *ngIf="addPlayerForm.controls['age'].invalid && (addPlayerForm.controls['age'].dirty || addPlayerForm.controls['age'].touched)">
+                            <div *ngIf="addPlayerForm.controls['age'].errors.required">
+                                First name is required
+                            </div>
+
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Position" [(ngModel)]="player.position"
-                            name="position">
+                        <input type="text" class="form-control" name="teamOne" placeholder="position" formControlName="position">
+                        </div>
+                        <div
+                            *ngIf="addPlayerForm.controls['position'].invalid && (addPlayerForm.controls['position'].dirty || addPlayerForm.controls['position'].touched)">
+                            <div *ngIf="addPlayerForm.controls['position'].errors.required">
+                                First name is required
+                            </div>
+
+                    </div>
+                    <div class="form-group">
+                        <select name="" id="" (change)="getTeamId($event)" class="form-control">
+                            <option style="color: black;" [value]="i._id" *ngFor="let i of teamlist">{{i.name}}
+                            </option>
+                        </select>
                     </div>
 
                     <div class="form-group text-center">
-                        <input type="submit" class="btn btn-primary py-3 px-5" value="Add">
+                        <input (click)="addPlayer()" class="btn btn-primary py-3 px-5" value="ADD">
                     </div>
                 </form>
             </div>

@@ -83,6 +83,7 @@ const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 // import express-seesion module
 const session = require("express-session");
+const { Console } = require("console");
 // configuration token
 const secretKey = "croco2023";
 app.use(
@@ -249,11 +250,31 @@ app.get("/players/:id", (req, res) => {
 
 // add player
 app.post("/players", (req, res) => {
-  console.log("here into BL : add player");
-  // traitement de la req
-  let obj = new Player(req.body);
-  obj.save();
-  res.json({ msg: "added player" });
+  try {
+    Team.findById(req.body.teamId).then((team) => {
+      if (!team) {
+        return res.status(404).json({ message: "Team not found" });
+      }
+      console.log(req.body);
+      console.log(team);
+      let player = new Player({
+        name: req.body.name,
+        position: req.body.position,
+        age: req.body.age,
+        team: req.body.teamId,
+      });
+      console.log(player);
+      player.save((err, doc) => {
+        team.players.push(doc);
+        team.save();
+        res.status(201).json({ isAdded: true });
+      });
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error creating player", error: error.message });
+  }
 });
 
 // delete player
@@ -359,11 +380,14 @@ app.get("/teams/:id", (req, res) => {
 
 // add team
 app.post("/teams", (req, res) => {
+  console.log("here into BL : add match");
   // traitement de la req
-  console.log(req.body);
   let obj = new Team(req.body);
-  obj.save();
-  res.json({ msg: "Added Team" });
+  // methode save
+  obj.save((err, doc) => {
+    console.log(err, doc);
+    err ? res.json({ msg: "NOK" }) : res.json({ msg: "OK" });
+  });
 });
 
 // delete team
